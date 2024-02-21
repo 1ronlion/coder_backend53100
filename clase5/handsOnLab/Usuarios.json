@@ -1,0 +1,16 @@
+[
+	{
+		"nombre": "Marisol",
+		"apellido": "Cadena",
+		"nombre_usuario": "MomoRompe",
+		"contrasena": "1e7d8dd7894a306a85a1bfc01e3d8dac7527edbc4a7657d97ccb34f6316fd050",
+		"salt": "RrAlV1J7BZIwMfDjOk6THr2USlbPrte7eqkqysuSYRL4n2EHD5L0AIV25LuZqhsu9t/DahYJPUrLpBkQkgFFRQX69G5Cv66dTXH47ncxjt+1VBo4xR0vaWkxPyzMQyLsC9mcukkBFnQwtfmxoavtg8mzpKyQX1aHf3cUBBUgNtM="
+	},
+	{
+		"nombre": "Gonzalo",
+		"apellido": "Fernandez",
+		"nombre_usuario": "gondev",
+		"contrasena": "c982170b926d2f30ff06e7481363a12b5edd1e68e6b7d16406dc3fcfe31b6e30",
+		"salt": "GrZWfRgN2VbAJ54QXcpypi5O6dMrLuKxt9DeoLld7a8RS6tfG6r0Sh9PFsznDeS5YY1ukE2Pl/yCsWfe2NlAEWr/LOGgdkUB147pfIVFdqTd5GMHZflWENLePvE8HSyfgQYIBCnehclGCrnONOd+3GUYfxvGEiilcr2eoINy488="
+	}
+]
