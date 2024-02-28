@@ -1,6 +1,9 @@
 <div>
     <h1>Home</h1>
     <input id="textbox">
+    {{#each logs as |obj|}}
+    {{obj.socketid}}: {{obj.message}}
+    {{/each}}
     <p id="log"></p>
 </div>
 
