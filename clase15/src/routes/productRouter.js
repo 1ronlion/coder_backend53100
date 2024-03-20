@@ -9,7 +9,7 @@ const router = express.Router()
 router.get("/all", (req,res)=> {
 
     let limit = req.query
-    let data = productManager.getAll(limit)
+    let data = productManager.getAll()
 
     res.json({data})
 
