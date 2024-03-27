@@ -16,6 +16,7 @@ export default class ProductManager {
     }
     getByBrand = async (brand) => {
         let result = await productsModel.find({brand: brand})
+        console.log(result);
         return result
     }
     addProduct = async (product) => {
