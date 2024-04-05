@@ -10,11 +10,10 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const fileStorage = FileStore(session);
 
-const PASS_MONGO = "381Jnj2LxwZIiMRp";
+
 
 const DB_URL =
-  `mongodb+srv://dannyriverol:${PASS_MONGO}@comision53100.yd2n4ln.mongodb.net/` ||
-  "mongodb://127.0.0.1:27017/users?retryWrites=true&w=majority"; //reemplazar por tu propia conexion a mongo
+  `TU URL MONGO`; //reemplazar por tu propia conexion a mongo
 //Settings
 app.set("views", __dirname + "/views");
 app.set("view engine", "handlebars");
