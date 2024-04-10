@@ -1,0 +1,2 @@
+generar una restore.handlebars que contenga un formulario que permita ingresar una contraseña nueva.
+Crear el archivo restore.js en ;a carpeta public/js que permita capturar los datos y hacer un fetch
