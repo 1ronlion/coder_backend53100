@@ -16,6 +16,9 @@ router.get("/", auth, (req, res) => {
   });
 });
 //restaurar password
+router.get("/restore", (req, res) => {
+  res.render("restore");
+});
 
 
 export default router;

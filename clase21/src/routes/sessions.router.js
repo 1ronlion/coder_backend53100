@@ -1,6 +1,7 @@
 import { Router } from "express";
 import userModel from "../models/Users.model.js";
 import { createHash, isValidPassword } from "../utils.js";
+
 const router = Router();
 
 router.post("/register", async (req, res) => {
@@ -34,7 +35,7 @@ router.post("/login", async (req, res) => {
       .status(400)
       .send({ status: "error", error: "error en las credenciales" });
   }
-  const validarPass = isValidPassword(user, password); ///andó
+  const validarPass = isValidPassword(user, password);
   console.log(validarPass);
   if (!validarPass)
     return res
@@ -55,7 +56,5 @@ router.post("/login", async (req, res) => {
     message: "Inicio exitoso",
   });
 });
-//restaurar password
-
 
 export default router;

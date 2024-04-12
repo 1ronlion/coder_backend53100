@@ -15,7 +15,8 @@ router.get("/", auth, (req, res) => {
     user: req.session.user,
   });
 });
-//restaurar password
+
+
 
 
 export default router;
