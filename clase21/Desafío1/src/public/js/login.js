@@ -5,13 +5,16 @@ form.addEventListener('submit',e=>{
     const data = new FormData(form);
     const obj = {};
     data.forEach((value,key)=>obj[key]=value);
+    //hacer un fetch
     fetch('/api/login',{
         method:'POST',
         body:JSON.stringify(obj),
         headers:{
             'Content-Type':'application/json'
         }
-    }).then(result=>result.json()).then(json=>{
-        localStorage.setItem('token',json.access_token)
+    }).then(result=>result.json())
+    .then(json=>{
+      //guardar en el localstorage
+
     })
 })
