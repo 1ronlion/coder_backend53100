@@ -15,6 +15,6 @@ form.addEventListener('submit',e=>{
     }).then(result=>result.json())
     .then(json=>{
       //guardar en el localstorage
-
+            localStorage.setItem('token',json.access_token)
     })
 })
