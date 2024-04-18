@@ -8,6 +8,7 @@ import viewsRouter from "./routes/views.router.js";
 import sessionsRouter from "./routes/sessions.router.js";
 import passport from "passport";
 import initilizePassport from "./config/passport.config.js";
+import cookieParser from "cookie-parser";
 const app = express();
 
 //seteamos el puerto
@@ -19,6 +20,7 @@ const connection = mongoose.connect(DBURL); //migrar a otro archivo
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
+app.use(cookieParser())//llamamos a cookieParser
 //logica de la sesión
 app.use(
   session({

@@ -1,13 +1,16 @@
 import passport from "passport";
 import local from "passport-local"; //estrategia local
 import GitHubStrategy from "passport-github2"; //estrategia github
+import jwt from "passport-jwt"; ////estrategia de jwt
 import userService from "../models/Users.model.js";
 import { createHash, isValidPassword } from "../utils.js";
 
-const LocalStrategy = local.Strategy;
+const LocalStrategy = local.Strategy; //estrategia local
+const JWTStrategy = jwt.Strategy; //estrategia jwt
+const ExtracJWT = jwt.ExtractJwt; //Extractor de jwt de los headers, de las cookies
 
 const initializePassport = () => {
-  //Registrar ususario loclamente
+  //Registrar ususario localmente
   passport.use(
     "register",
     new LocalStrategy(
@@ -65,13 +68,13 @@ const initializePassport = () => {
     "github",
     new GitHubStrategy(
       {
-        clientID: "Iv1.88973e90f3fab95a",//id de la app en github
-        clientSecret: "fd8e7f3b575d548ea42eb03f4dd9fcd2b928e887",//clave secreta de github
-        callbackURL: "http://localhost:4000/api/sessions/githubcallback",//url callback de github
+        clientID: "Iv1.88973e90f3fab95a", //id de la app en github
+        clientSecret: "fd8e7f3b575d548ea42eb03f4dd9fcd2b928e887", //clave secreta de github
+        callbackURL: "http://localhost:4000/api/sessions/githubcallback", //url callback de github
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
-          console.log(profile);//obtenemos el objeto del perfil
+          console.log(profile); //obtenemos el objeto del perfil
           //buscamos en la db el email
           const user = await userService.findOne({
             email: profile._json.email,
@@ -99,6 +102,31 @@ const initializePassport = () => {
     )
   );
 
+  //Estrategia para jwt
+  passport.use(
+    "jwt",
+    new JWTStrategy(
+      {
+        jwtFromRequest: ExtracJWT.fromExtractors([cookieExtractor]), //cookieExtractor es una función que nosotros creamos
+        secretOrKey: "Secret", //misma que en app
+      },
+      async (jwt_payload, done) => {
+        try {
+          return done(null, jwt_payload);
+        } catch (error) {
+          return done(error);
+        }
+      }
+    )
+  );
+  //función que extrae las cookies
+  const cookieExtractor = (req) => {
+    let token = null;
+    if (req && req.cookies) {
+      token = req.cookies['coderCookie'];
+    }
+    return token;
+  };
   //Serializar y deserializar usuario
   passport.serializeUser((user, done) => {
     done(null, user._id);
