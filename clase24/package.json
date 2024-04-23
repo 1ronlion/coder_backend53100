@@ -1,7 +1,7 @@
 {
   "name": "clase24-integradora",
   "version": "1.0.0",
-  "description": "plaforma de ecommerce",
+  "description": "plataforma de ecommerce",
   "main": "index.js",
   "type": "module",
   "scripts": {
