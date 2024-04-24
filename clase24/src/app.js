@@ -6,7 +6,9 @@ import handlebars from "express-handlebars";
 import productRouter from "./routes/product.router.js";
 import categoryRouter from "./routes/category.router.js";
 import userRouter from "./routes/user.router.js";
-
+import cookieParser from "cookie-parser";
+import passport from "passport";
+import initilizePassport from './config/passport.config.js'
 
 //settings
 const app = express();
@@ -16,6 +18,9 @@ app.set("PORT", process.env.PORT || 4000);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(cookieParser())
+initilizePassport()
+app.use(passport.initialize())
 
 app.use(express.static(__dirname + "/public"));
 app.set("views", __dirname + "/views");

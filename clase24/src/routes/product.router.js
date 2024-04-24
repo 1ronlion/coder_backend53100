@@ -6,7 +6,17 @@ const productManager = new ProductManager();
 //get Products
 router.get("/products", async (req, res) => {
   //lógica a implementar
-  
+const page= req.params.page 
+const limit= req.params.limit 
+
+  try {
+    //const products = await productManager.getAll();
+    //const products = await productManager.getAllProductsWithCategories();
+    const products = await productManager.getPaginatedProducts(page, limit);
+    res.status(200).json({ products }); //internamente json y se lo pasa a send()
+  } catch (error) {
+    res.status(500).json({ error: `Error al recibir los productos` });
+  }
 });
 //get Product
 router.get("/product", async (req, res) => {

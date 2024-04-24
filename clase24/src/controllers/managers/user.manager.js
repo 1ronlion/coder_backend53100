@@ -17,8 +17,8 @@ export default class UserManager {
   };
 
   createUser = async (userData) => {
+    //usar trycatch
     // Hashear la contraseña antes de crear el usuario
-
     userData.password = createHash(userData.password);
     const result = await userModel.create(userData);
     return result;
@@ -41,10 +41,27 @@ export default class UserManager {
   // Buscar con carritos incluidos
   getAllUsersWithCart = async () => {
     //logica a implementar
+    try {
+      const users = await userModel.find().populate("cart.product");
+      return users;
+    } catch (error) {
+      console.log("error al obtener los usuarios ", error.message);
+    }
   };
 
   // Paginación
   getPaginatedUsers = async (page = 1, limit = 10) => {
-   //logica a implementar
+    //logica a implementar
+    try {
+      const options = {
+        page: parseInt(page),
+        limit: parseInt(limit),
+      };
+      const users = await userModel.paginate({}, options);
+
+      return users;
+    } catch (error) {
+      console.log("Error al realizar la paginación " + error.message);
+    }
   };
 }
