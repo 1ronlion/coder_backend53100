@@ -1,6 +1,10 @@
 import express from "express";
-const app = express();
 import { entorno } from "./config/config.js";
+import userRouter from './routes/users.router.js'
+import toysRouter from './routes/toys.router.js'
+
+
+const app = express();
 
 
 const port = entorno.port;
@@ -8,8 +12,11 @@ const port = entorno.port;
 app.use(express.json());
 
 //routes
+app.use('/api', userRouter)
+app.use('/api', toysRouter)
+
 app.get("/", (req, res) => {
-  res.send("Inicio");
+  res.status(200).send("Inicio");
 });
 
 
