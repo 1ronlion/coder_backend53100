@@ -2,7 +2,8 @@ import express from "express";
 import { entorno } from "./config/config.js";
 import contactRoutes from "./routes/contacts.route.js";
 const app = express();
-
+// import mongoose from "mongoose";
+// const connection = mongoose.connect("mongodb://localhost:27017/contactos");
 const port = entorno.port;
 
 //middlewares
