@@ -11,9 +11,10 @@
 //   res.send({ status: "success", result: "addProduct" });
 // };
 
-import Businees from "../dao/Classes/business.dao.js";
+import Business from "../dao/Classes/business.dao.js";
 
-const businessService = new Businees();
+const businessService = new Business();
+
 export const getBusiness = async (req, res) => {
   const result = await businessService.getBusiness();
 

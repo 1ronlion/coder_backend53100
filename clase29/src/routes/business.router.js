@@ -3,7 +3,7 @@ import {
   getBusiness,
   getBusinessById,
   saveBusiness,
-} from "../controllers/businnes.controller.js   ";
+} from "../controllers/business.controller.js   ";
 const router = Router();
 
 router.get("/", getBusiness);

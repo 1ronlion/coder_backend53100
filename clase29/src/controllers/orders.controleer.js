@@ -30,7 +30,7 @@ export const getOrderById = async (req, res) => {
   res.send({ status: "success", result: order });
 };
 
-export const createOrder = async (req, res) => {
+export const saveOrder = async (req, res) => {
   //traemos el usuario el negocio, y los productos
   const { user, business, products } = req.body;
 
@@ -44,7 +44,7 @@ export const createOrder = async (req, res) => {
   //calcular precio total
   const sum = actualOrders.reduce((acc, prev) => (acc += prev.price), 0);
   //construimos la orden
-  const orderNumber = Math.floor(Math.random() * 10000 + 1); //revisar
+  const orderNumber = Math.floor(Math.random() * 10000 + 1); 
 
   const order = {
     number: orderNumber,
