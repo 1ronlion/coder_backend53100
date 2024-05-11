@@ -9,10 +9,11 @@
 // } 
 
 import User from '../dao/Classes/users.dao.js'
+//import User from '../dao/MYSQL/Classes/users.dao.js'
 
 const userService = new User();
 export const getUsers = async (req, res) => {
-  const users = await userService.getUser();
+  const users = await userService.getUser();//revision
   res.send({ status: "success", result: users });
 };
 export const getUserById = async (req, res) => {
