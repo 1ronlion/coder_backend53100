@@ -3,6 +3,7 @@ import { config } from "dotenv";
 import __dirname from "./utils.js";
 
 import nodemailer from "nodemailer";
+import twilio from "twilio";
 //initialization
 const app = express();
 config();
@@ -11,6 +12,8 @@ config();
 app.set("PORT", process.env.PORT || 3000);
 
 //twilio
+const client = twilio(process.env.TWILIO_SSID, process.env.AUTH_TOKEN);
+//nodemailer
 const mailOptions = {
   service: "gmail",
   host: "smtp.gmail.com",
@@ -21,7 +24,6 @@ const mailOptions = {
     pass: process.env.MAIL_PASSWORD,
   },
 };
-//nodemailer
 const transport = nodemailer.createTransport(mailOptions);
 
 //middlewares
@@ -67,6 +69,15 @@ app.get("/mail-adjunto", async (req, res) => {
 });
 
 //sms
+app.get("/sms", async (req, res) => {
+  const { message } = req.body;
+  const result = await client.messages.create({
+    body: message,
+    to: process.env.PHONE_NUMBER_TO, //cliente
+    from: process.env.PHONE_NUMBER, //numero de twilio
+  });
 
+  res.send("Mensaje enviado");
+});
 //listeners
 app.listen(app.get("PORT"), console.log(`Server on port ${app.get("PORT")}`));
